@@ -1,123 +1,87 @@
 <!DOCTYPE html>
-
-<script type="module" src="js/firebase.js"></script>
-
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Admin Login | NEU Library Visitor Log System</title>
-<!-- BEGIN: Tailwind CSS Setup -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'neu-red': '#B22222',
-            'neu-gray': '#F5F5F5',
-            'admin-blue': '#1e293b'
-          }
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'neu-red': '#B22222',
+          'neu-gray': '#F5F5F5',
+          'admin-blue': '#1e293b'
         }
       }
     }
-  </script>
-<!-- END: Tailwind CSS Setup -->
-<!-- BEGIN: Custom Styles -->
-<style data-purpose="layout-enhancements">
-    body {
-      background-image: radial-gradient(circle at center, #f8fafc 0%, #e2e8f0 100%);
-      min-height: 100vh;
-    }
-    .login-card {
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-    }
-  </style>
-<!-- END: Custom Styles -->
+  }
+</script>
+<style>
+  body { background-image: radial-gradient(circle at center, #f8fafc 0%, #e2e8f0 100%); min-height: 100vh; }
+  .login-card { box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1),0 8px 10px -6px rgba(0,0,0,0.1); }
+</style>
 </head>
 <body class="flex items-center justify-center p-4">
-<!-- BEGIN: Admin Login Container -->
-<main class="w-full max-w-md" data-purpose="login-container">
-<!-- BEGIN: Brand Logo & Header -->
-<header class="text-center mb-8" data-purpose="login-header">
+<main class="w-full max-w-md">
+<header class="text-center mb-8">
 <div class="inline-flex items-center justify-center w-16 h-16 bg-admin-blue rounded-xl mb-4 text-white shadow-lg">
-<svg class="h-10 w-10" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
+<svg class="h-10 w-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
 </div>
 <h1 class="text-2xl font-bold text-slate-800 uppercase tracking-tight">NEU Library</h1>
 <p class="text-slate-500 font-medium">Visitor Log System - Admin Portal</p>
 </header>
-<!-- END: Brand Logo & Header -->
-<!-- BEGIN: Login Form Card -->
-<section class="bg-white rounded-2xl p-8 login-card" data-purpose="login-form-card">
-<form action="#" class="space-y-6" method="POST">
-<!-- BEGIN: Email Field -->
+
+<section class="bg-white rounded-2xl p-8 login-card">
+<form id="admin-login-form" class="space-y-6">
 <div class="space-y-2">
 <label class="block text-sm font-semibold text-slate-700" for="admin-identifier">Admin Email or Username</label>
 <div class="relative">
-<span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
-<svg class="h-5 w-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-<path clip-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" fill-rule="evenodd"></path>
-</svg>
-</span>
-<input class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-admin-blue focus:border-transparent transition-all outline-none text-slate-800" id="admin-identifier" name="admin-identifier" placeholder="admin@neu.edu" required="" type="text"/>
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path clip-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" fill-rule="evenodd"/></svg></span>
+<input class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-admin-blue focus:border-transparent text-slate-800 outline-none" id="admin-identifier" name="admin-identifier" placeholder="admin@neu.edu" type="text" required/>
 </div>
 </div>
-<!-- END: Email Field -->
-<!-- BEGIN: Password Field -->
+
 <div class="space-y-2">
 <div class="flex justify-between items-center">
 <label class="block text-sm font-semibold text-slate-700" for="password">Password</label>
 <a class="text-xs font-medium text-admin-blue hover:underline" href="#">Forgot Password?</a>
 </div>
 <div class="relative">
-<span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
-<svg class="h-5 w-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-<path clip-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" fill-rule="evenodd"></path>
-</svg>
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path clip-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" fill-rule="evenodd"/></svg>
 </span>
-<input class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-admin-blue focus:border-transparent transition-all outline-none text-slate-800" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<input class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-admin-blue focus:border-transparent text-slate-800 outline-none" id="password" name="password" placeholder="••••••••" type="password" required/>
 </div>
 </div>
-<!-- END: Password Field -->
-<!-- BEGIN: Remember Me -->
+
 <div class="flex items-center">
 <input class="h-4 w-4 text-admin-blue focus:ring-admin-blue border-slate-300 rounded cursor-pointer" id="remember-me" name="remember-me" type="checkbox"/>
-<label class="ml-2 block text-sm text-slate-600 cursor-pointer" for="remember-me">
-            Remember this device for 30 days
-          </label>
+<label class="ml-2 block text-sm text-slate-600 cursor-pointer" for="remember-me">Remember this device for 30 days</label>
 </div>
-<!-- END: Remember Me -->
-<!-- BEGIN: Submit Button -->
-<button class="w-full bg-admin-blue hover:bg-slate-900 text-white font-bold py-3 px-4 rounded-lg shadow-md transform transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-admin-blue" type="submit">
-          Access Admin Dashboard
-        </button>
-<!-- END: Submit Button -->
+
+<button class="w-full bg-admin-blue hover:bg-slate-900 text-white font-bold py-3 px-4 rounded-lg shadow-md transform transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-admin-blue" type="submit">Access Admin Dashboard</button>
 </form>
 </section>
-<!-- END: Login Form Card -->
-<!-- BEGIN: Footer Info -->
-<footer class="mt-8 text-center" data-purpose="login-footer">
-<p class="text-slate-500 text-sm">
-        © 2023 NEU Library Management. <br/>
+
+<footer class="mt-8 text-center text-slate-500 text-sm">
+© 2023 NEU Library Management. <br/>
 <span class="opacity-75">Authorized personnel only. All access attempts are logged.</span>
-</p>
-<div class="mt-4 flex justify-center space-x-4">
-<a class="text-xs text-slate-400 hover:text-admin-blue transition-colors" href="#">Privacy Policy</a>
-<span class="text-slate-300">|</span>
-<a class="text-xs text-slate-400 hover:text-admin-blue transition-colors" href="#">Security Standards</a>
-</div>
 </footer>
-<!-- END: Footer Info -->
-</main>
-<!-- END: Admin Login Container -->
-<!-- BEGIN: Form Interactions -->
-<script data-purpose="form-interactivity">
-    // Add simple feedback or validation handling if needed
-    document.querySelector('form').addEventListener('submit', function(e) {
-      // Logic for authentication would go here
-      console.log('Login attempt detected for Admin portal');
-    });
-  </script>
-<!-- END: Form Interactions -->
-</body></html>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-analytics.js";
+  const firebaseConfig = { apiKey: "AIzaSyCcGv26mi0A_ohEt8vSw6Y8Z4ss1FOtFSc", authDomain: "neu-library-visitor-log-7095e.firebaseapp.com", projectId: "neu-library-visitor-log-7095e", storageBucket: "neu-library-visitor-log-7095e.firebasestorage.app", messagingSenderId: "104428636117", appId: "1:104428636117:web:fed537fd7f7c85fc739f5c", measurementId: "G-LH3GWN7Y1N" };
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+  document.getElementById('admin-login-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    alert("Admin login demo: Firebase auth logic goes here");
+  });
+</script>
+</body>
+</html>
