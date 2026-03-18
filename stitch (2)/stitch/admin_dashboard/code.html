@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEU Library Admin Dashboard</title>
+<!-- BEGIN: Scripts and Styles -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style data-purpose="custom-typography">
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+<style data-purpose="layout-styling">
+    .sidebar-transition {
+      transition: all 0.3s ease-in-out;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 3px;
+    }
+  </style>
+<!-- END: Scripts and Styles -->
+</head>
+<body class="bg-gray-50 text-gray-900 overflow-hidden h-screen flex">
+<!-- BEGIN: Sidebar Navigation -->
+<aside class="w-64 bg-slate-900 text-white flex-shrink-0 flex flex-col sidebar-transition hidden md:flex">
+<div class="p-6 border-b border-slate-800">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-xl">N</div>
+<span class="font-bold text-lg tracking-tight">NEU Library</span>
+</div>
+</div>
+<nav class="flex-1 p-4 space-y-2 overflow-y-auto custom-scrollbar">
+<a class="flex items-center space-x-3 p-3 bg-blue-600 text-white rounded-lg transition-colors" data-purpose="nav-item" href="#">
+<svg class="h-5 w-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center space-x-3 p-3 text-slate-400 hover:bg-slate-800 hover:text-white rounded-lg transition-colors" data-purpose="nav-item" href="#">
+<svg class="h-5 w-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="font-medium">Visitor Logs</span>
+</a>
+<a class="flex items-center space-x-3 p-3 text-slate-400 hover:bg-slate-800 hover:text-white rounded-lg transition-colors" data-purpose="nav-item" href="#">
+<svg class="h-5 w-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="font-medium">Reports</span>
+</a>
+<a class="flex items-center space-x-3 p-3 text-slate-400 hover:bg-slate-800 hover:text-white rounded-lg transition-colors" data-purpose="nav-item" href="#">
+<svg class="h-5 w-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-800">
+<button class="flex items-center space-x-3 w-full p-3 text-red-400 hover:bg-slate-800 rounded-lg transition-colors">
+<svg class="h-5 w-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="font-medium">Sign Out</span>
+</button>
+</div>
+</aside>
+<!-- END: Sidebar Navigation -->
+<!-- BEGIN: Main Content -->
+<main class="flex-1 flex flex-col h-full overflow-hidden">
+<!-- BEGIN: Header -->
+<header class="bg-white border-b border-gray-200 h-16 flex items-center justify-between px-8 flex-shrink-0">
+<h1 class="text-xl font-bold text-gray-800">Admin Dashboard</h1>
+<div class="flex items-center space-x-4">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-semibold text-gray-900">Admin User</p>
+<p class="text-xs text-gray-500">System Administrator</p>
+</div>
+<img alt="Admin Profile" class="w-10 h-10 rounded-full border border-gray-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFyJYflUW0f4xTPjCjjigRVAZA8ABuk1uf_zKyXB6fc5MyyqDHdTXApSsXoFgnqo87arGECiAKkMD8MDqkjPPluka1Bo9rYq6dIYMvS4ZxC5w30RnrhN0m7etADGdhmj6SoiVQ1JqZH295z0Oxfh1h-qa6Fmzwbkwkjicq0udYaow0_pLiNUaBQFGJeNsIQ9rJdkYYIeGeV_EmIeP2UZac_GLMukTtyI-BaggRr_HlGf0LCAx4OoNaz6y3Ad7pyoC5yt88rJdbNDxB"/>
+</div>
+</header>
+<!-- END: Header -->
+<!-- BEGIN: Scrollable Dashboard Area -->
+<div class="flex-1 overflow-y-auto p-8 custom-scrollbar">
+<!-- BEGIN: Statistic Cards -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8" data-purpose="statistics-overview">
+<!-- Visitors Today -->
+<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center">
+<div class="p-3 bg-blue-50 text-blue-600 rounded-lg mr-4">
+<svg class="h-8 w-8" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<p class="text-sm font-medium text-gray-500 uppercase tracking-wider">Visitors Today</p>
+<p class="text-3xl font-bold text-gray-900">0</p>
+</div>
+</div>
+<!-- Visitors This Week -->
+<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center">
+<div class="p-3 bg-green-50 text-green-600 rounded-lg mr-4">
+<svg class="h-8 w-8" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<p class="text-sm font-medium text-gray-500 uppercase tracking-wider">Visitors This Week</p>
+<p class="text-3xl font-bold text-gray-900">0</p>
+</div>
+</div>
+<!-- Total Visitors -->
+<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center">
+<div class="p-3 bg-purple-50 text-purple-600 rounded-lg mr-4">
+<svg class="h-8 w-8" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<p class="text-sm font-medium text-gray-500 uppercase tracking-wider">Total Visitors</p>
+<p class="text-3xl font-bold text-gray-900">0</p>
+</div>
+</div>
+</section>
+<!-- END: Statistic Cards -->
+<!-- BEGIN: Filters and Search -->
+<section class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-6" data-purpose="table-filters">
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+<div class="flex-1 relative">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</span>
+<input class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Search by name, email, or college..." type="text"/>
+</div>
+<div class="flex items-center space-x-3">
+<label class="text-sm font-medium text-gray-700 whitespace-nowrap" for="date-filter">Filter Date:</label>
+<input class="block w-full px-3 py-2 border border-gray-300 rounded-md leading-5 bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm" id="date-filter" type="date"/>
+<button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">Export</button>
+</div>
+</div>
+</section>
+<!-- END: Filters and Search -->
+<!-- BEGIN: Visitor Logs Table -->
+<section class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden" data-purpose="log-container">
+<div class="overflow-x-auto">
+<table class="min-w-full divide-y divide-gray-200" id="visitor-logs-table">
+<thead class="bg-gray-50">
+<tr>
+<th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider" scope="col">Visitor Name</th>
+<th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider" scope="col">Email Address</th>
+<th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider" scope="col">College/Dept</th>
+<th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider" scope="col">Purpose of Visit</th>
+<th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider" scope="col">Date</th>
+<th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider" scope="col">Time In</th>
+</tr>
+</thead>
+<tbody class="bg-white divide-y divide-gray-200" id="logs-body">
+<!-- Empty State Row (Shown when DataStore is empty) -->
+<tr id="empty-state">
+<td class="px-6 py-20 text-center" colspan="6">
+<div class="flex flex-col items-center justify-center">
+<div class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-4">
+<svg class="h-8 w-8 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<p class="text-lg font-medium text-gray-600">No logs found</p>
+<p class="text-sm text-gray-400 max-w-xs">There are currently no visitor entries to display for the selected filters.</p>
+</div>
+</td>
+</tr>
+<!-- Example of a data row (Hidden for this prompt's snapshot) -->
+<!-- 
+              <tr class="hover:bg-gray-50 transition-colors">
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Juan Dela Cruz</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">juan.dc@neu.edu.ph</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">College of Informatics</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Research</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Oct 24, 2023</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">09:15 AM</td>
+              </tr>
+              -->
+</tbody>
+</table>
+</div>
+<!-- BEGIN: Pagination Footer -->
+<div class="bg-white px-6 py-4 border-t border-gray-200 flex items-center justify-between">
+<div class="text-sm text-gray-500">
+            Showing <span class="font-medium">0</span> to <span class="font-medium">0</span> of <span class="font-medium">0</span> results
+          </div>
+<div class="flex space-x-2">
+<button class="px-3 py-1 border border-gray-300 rounded text-sm font-medium text-gray-400 cursor-not-allowed" disabled="">Previous</button>
+<button class="px-3 py-1 border border-gray-300 rounded text-sm font-medium text-gray-400 cursor-not-allowed" disabled="">Next</button>
+</div>
+</div>
+<!-- END: Pagination Footer -->
+</section>
+<!-- END: Visitor Logs Table -->
+</div>
+<!-- END: Scrollable Dashboard Area -->
+</main>
+<!-- END: Main Content -->
+</body></html>
