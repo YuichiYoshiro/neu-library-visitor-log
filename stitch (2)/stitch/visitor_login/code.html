@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Visitor Log - NEU Library</title>
+<!-- Tailwind CSS v3 CDN with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration for University Branding -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            neu: {
+              blue: '#003366', // Deep University Blue
+              accent: '#facc15', // Gold/Yellow accent
+              light: '#f8fafc'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-neu-light font-sans text-slate-800 min-h-screen flex flex-col">
+<!-- BEGIN: MainHeader -->
+<header class="bg-neu-blue text-white py-6 shadow-md" data-purpose="site-header">
+<div class="container mx-auto px-4 flex justify-between items-center">
+<div class="flex items-center space-x-4">
+<!-- University Logo Placeholder -->
+<div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-neu-blue font-bold text-xl">
+          NEU
+        </div>
+<div>
+<h1 class="text-2xl font-bold tracking-tight">University Library</h1>
+<p class="text-sm opacity-80">Visitor Log System</p>
+</div>
+</div>
+<div class="hidden md:block text-right">
+<p class="text-xs uppercase tracking-widest opacity-70">Welcome to Knowledge</p>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: MainContent -->
+<main class="flex-grow flex items-center justify-center p-4">
+<!-- Login Card Container -->
+<div class="bg-white w-full max-auto max-w-md rounded-xl shadow-xl overflow-hidden border border-slate-200" data-purpose="login-card">
+<!-- Card Header -->
+<div class="bg-slate-50 border-b border-slate-200 p-6 text-center">
+<h2 class="text-xl font-semibold text-neu-blue">Visitor Entry</h2>
+<p class="text-sm text-slate-500">Please provide your credentials to log your visit</p>
+</div>
+<!-- Success Message (Hidden by default, shown on submission) -->
+<div class="hidden m-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center space-x-3" id="success-alert">
+<svg class="w-5 h-5 text-green-500" fill="currentColor" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path>
+</svg>
+<span class="text-green-800 font-medium">Welcome to NEU Library!</span>
+</div>
+<!-- Login Form -->
+<form action="#" class="p-8 space-y-6" data-purpose="visitor-entry-form" id="visitor-form" method="POST">
+<!-- Identification Field (Email or RFID) -->
+<div class="space-y-2">
+<label class="block text-sm font-medium text-slate-700" for="identifier">Institutional Email or RFID Number</label>
+<div class="relative">
+<input class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-neu-blue focus:border-neu-blue transition-all" id="identifier" name="identifier" placeholder="name@neu.edu.ph or RFID#" required="" type="text"/>
+</div>
+<p class="hidden text-xs text-red-500 mt-1" id="email-error">Please use a valid university email address (@neu.edu.ph).</p>
+</div>
+<!-- Purpose of Visit Dropdown -->
+<div class="space-y-2">
+<label class="block text-sm font-medium text-slate-700" for="purpose">Purpose of Visit</label>
+<select class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-neu-blue focus:border-neu-blue bg-white transition-all" id="purpose" name="purpose" required="">
+<option disabled="" selected="" value="">Select purpose...</option>
+<option value="Reading">Reading</option>
+<option value="Researching">Researching</option>
+<option value="Studying">Studying</option>
+<option value="Computer">Use of Computer</option>
+</select>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-neu-blue hover:bg-slate-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform active:scale-95 transition-all duration-150" type="submit">
+          Submit Log Entry
+        </button>
+</form>
+<!-- Google Auth Button (Visual indicator for Google-based Email) -->
+<div class="px-8 pb-8">
+<div class="relative flex items-center justify-center mb-6">
+<span class="absolute px-3 bg-white text-xs text-slate-400 uppercase">Or quick login with</span>
+<div class="w-full border-t border-slate-200"></div>
+</div>
+<button class="w-full flex items-center justify-center gap-3 px-4 py-2 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors text-sm font-medium text-slate-600" type="button">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+          Google Workspace Account
+        </button>
+</div>
+</div>
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: Footer -->
+<footer class="py-6 text-center text-slate-400 text-xs border-t border-slate-200">
+<p>© 2023 NEU Library Information Systems. All Rights Reserved.</p>
+<div class="mt-2 space-x-4">
+<a class="hover:text-neu-blue underline decoration-dotted" href="#">Privacy Policy</a>
+<a class="hover:text-neu-blue underline decoration-dotted" href="#">Library Guidelines</a>
+</div>
+</footer>
+<!-- END: Footer -->
+<!-- BEGIN: LogicScripts -->
+<script data-purpose="form-validation-and-ui">
+    document.getElementById('visitor-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const identifier = document.getElementById('identifier').value;
+      const emailError = document.getElementById('email-error');
+      const successAlert = document.getElementById('success-alert');
+      const form = this;
+
+      // Simple validation for email vs numeric RFID
+      // If it contains '@', it must end with the university domain
+      const isEmail = identifier.includes('@');
+      const isUniversityDomain = identifier.toLowerCase().endsWith('@neu.edu.ph');
+
+      if (isEmail && !isUniversityDomain) {
+        emailError.classList.remove('hidden');
+        document.getElementById('identifier').classList.add('border-red-500');
+        return;
+      }
+
+      // If valid or numeric (RFID), show success and reset
+      emailError.classList.add('hidden');
+      document.getElementById('identifier').classList.remove('border-red-500');
+      
+      // Visual feedback: hide form, show success
+      form.classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        form.classList.add('hidden');
+        successAlert.classList.remove('hidden');
+        successAlert.classList.add('animate-bounce');
+        
+        // Reset after 3 seconds for next visitor
+        setTimeout(() => {
+          location.reload();
+        }, 3000);
+      }, 300);
+    });
+  </script>
+<!-- END: LogicScripts -->
+</body></html>
